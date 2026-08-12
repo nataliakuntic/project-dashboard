@@ -1,0 +1,81 @@
+:root {
+  --dashboard-mint: #4fe3b6;
+  --dashboard-magenta: #cf1266;
+  --dashboard-text: #ffffff;
+  --button-honey-secondary: #e3d996;
+  --button-honey-hover: #e4d07e;
+  --button-honey-active: #d7be5d;
+  --button-honey-primary-hover: #cfae4f;
+  --button-honey-primary-active: #c29f40;
+  --button-honey-tertiary: #fff9d5;
+  --button-honey-stroke: #a19f92;
+  --button-honey-focus-ring: #bfa73f;
+  --button-text-dark: #292821;
+  --button-pistachio-secondary: #d8eccf;
+  --button-pistachio-primary-hover: #59897e;
+  --button-pistachio-primary-active: #507f73;
+  --button-pistachio-tertiary: #f1ffeb;
+  --button-pistachio-hover: #a8d5c4;
+  --button-pistachio-active: #78b5a1;
+  --button-pistachio-stroke: #2f3e3e;
+  --button-pistachio-focus-ring: #5fa99b;
+  --workspace-citrus-surface: #ccff00;
+  --workspace-violet-surface: #6f2cff;
+  --workspace-orange-surface: #ff6a00;
+  --workspace-lilac-shell: #c0b0ee;
+  --button-dustyrose-delete-hover: #e9dddd;
+  --button-dustyrose-delete-active: #dccccc;
+  --button-dustyrose-delete-stroke: #a19f92;
+  --button-dustyrose-delete-focus-ring: #ebc5c5;
+  --button-dustyrose-tertiary: #f7f1f1;
+  --button-dustyrose-hover: #d0a4a4;
+  --button-dustyrose-active: #c18484;
+  --button-dustyrose-focus-ring: #d99a9a;
+  --card-boutique: #e2c3c3;
+  --card-default: #ffffff;
+  --project-card-title: #1a1a1a;
+  --project-card-subtitle: #a3a3a3;
+  --project-card-description: #57534e;
+  --dashboard-max-width: 1600px;
+  --dashboard-side-padding: clamp(1.5rem, 4vw, 4.5rem);
+  --dashboard-top-padding: clamp(1.5rem, 3vw, 2.75rem);
+  --dashboard-title-size: clamp(2.75rem, 6vw, 6.5rem);
+  --language-switch-font-size: calc(var(--dashboard-title-size) * 0.42);
+  --project-title-size: clamp(2.3rem, 4.6vw, 4.75rem);
+  --project-description-size: clamp(1rem, 1.4vw, 1.35rem);
+  --workspace-top-controls-right: clamp(-1rem, 0vw, 0.5rem);
+  --workspace-top-controls-gap: clamp(0.75rem, 1.2vw, 1rem);
+  --workspace-nav-column-width: clamp(2.75rem, 5vw, 4.5rem);
+  --workspace-utility-column-width: calc(var(--language-switch-font-size) * 2.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+  color: var(--dashboard-text);
+}
+
+button {
+  font: inherit;
+}
+
+@media (max-width: 540px) {
+  :root {
+    --dashboard-side-padding: 1.25rem;
+    --project-title-size: clamp(2rem, 10vw, 3.25rem);
+    --project-description-size: clamp(1rem, 4.8vw, 1.12rem);
+  }
+}

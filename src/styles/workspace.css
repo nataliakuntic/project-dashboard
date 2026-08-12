@@ -1,0 +1,415 @@
+.dashboard-workspace-panel {
+  min-height: 100%;
+  background: var(--workspace-surface, var(--dashboard-magenta));
+  color: var(--workspace-text, var(--dashboard-text));
+  --workspace-card-button-bg: var(--button-honey-secondary);
+  --workspace-card-button-hover: var(--button-honey-hover);
+  --workspace-card-button-active: var(--button-honey-active);
+  --workspace-card-button-stroke: var(--button-honey-stroke);
+  --workspace-card-button-focus: var(--button-honey-focus-ring);
+  --workspace-card-button-text: var(--button-text-dark);
+  --workspace-project-button-bg: var(--button-honey-tertiary);
+  --workspace-project-button-hover: var(--button-honey-secondary);
+  --workspace-project-button-active: var(--button-honey-hover);
+  --workspace-project-button-stroke: var(--button-honey-stroke);
+  --workspace-project-button-focus: var(--button-honey-focus-ring);
+  --workspace-project-button-text: var(--button-text-dark);
+}
+
+.dashboard-shell-workspace-panel {
+  position: relative;
+  width: min(100%, 1920px);
+  min-height: 100%;
+  margin: 0 auto;
+  padding-top: clamp(2.25rem, 6vh, 5rem);
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+  padding-inline: var(--dashboard-side-padding);
+}
+
+.dashboard-workspace-panel[data-theme="magenta"] {
+  --workspace-surface: var(--dashboard-magenta);
+  --workspace-text: #ffffff;
+  --workspace-nav-color: #ffffff;
+  --workspace-dash: rgba(255, 255, 255, 0.95);
+  --workspace-card-shell: var(--card-boutique);
+  --workspace-delete-bg: var(--button-pistachio-tertiary);
+  --workspace-delete-hover: var(--button-pistachio-hover);
+  --workspace-delete-active: var(--button-pistachio-active);
+  --workspace-delete-stroke: var(--button-pistachio-stroke);
+  --workspace-delete-focus: var(--button-pistachio-focus-ring);
+}
+
+.dashboard-workspace-panel[data-theme="citrus"] {
+  --workspace-surface: var(--workspace-citrus-surface);
+  --workspace-text: #2f3e3e;
+  --workspace-nav-color: #2f3e3e;
+  --workspace-dash: rgba(47, 62, 62, 0.95);
+  --workspace-card-shell: var(--workspace-lilac-shell);
+  --workspace-delete-bg: var(--button-dustyrose-tertiary);
+  --workspace-delete-hover: var(--button-dustyrose-delete-hover);
+  --workspace-delete-active: var(--button-dustyrose-delete-active);
+  --workspace-delete-stroke: var(--button-dustyrose-delete-stroke);
+  --workspace-delete-focus: var(--button-dustyrose-delete-focus-ring);
+  --workspace-card-button-bg: var(--button-pistachio-secondary);
+  --workspace-card-button-hover: var(--button-pistachio-primary-hover);
+  --workspace-card-button-active: var(--button-pistachio-primary-active);
+  --workspace-card-button-stroke: var(--button-pistachio-stroke);
+  --workspace-card-button-focus: var(--button-pistachio-focus-ring);
+  --workspace-card-button-text: var(--button-pistachio-stroke);
+  --workspace-project-button-bg: var(--button-pistachio-tertiary);
+  --workspace-project-button-hover: var(--button-pistachio-primary-hover);
+  --workspace-project-button-active: var(--button-pistachio-primary-active);
+  --workspace-project-button-stroke: var(--button-pistachio-stroke);
+  --workspace-project-button-focus: var(--button-pistachio-focus-ring);
+  --workspace-project-button-text: var(--button-pistachio-stroke);
+}
+
+.dashboard-workspace-panel[data-theme="citrus"] .workspace-action-button-card:hover,
+.dashboard-workspace-panel[data-theme="citrus"] .workspace-action-button-card:active,
+.dashboard-workspace-panel[data-theme="citrus"] .workspace-action-button-project:hover,
+.dashboard-workspace-panel[data-theme="citrus"] .workspace-action-button-project:active {
+  color: #ffffff;
+}
+
+.dashboard-workspace-panel[data-theme="violet"] {
+  --workspace-surface: var(--workspace-violet-surface);
+  --workspace-text: #ffffff;
+  --workspace-nav-color: #ffffff;
+  --workspace-dash: rgba(255, 255, 255, 0.95);
+  --workspace-card-shell: #dcd8d2;
+  --workspace-delete-bg: var(--button-dustyrose-tertiary);
+  --workspace-delete-hover: var(--button-dustyrose-delete-hover);
+  --workspace-delete-active: var(--button-dustyrose-delete-active);
+  --workspace-delete-stroke: var(--button-dustyrose-delete-stroke);
+  --workspace-delete-focus: var(--button-dustyrose-delete-focus-ring);
+  --workspace-card-button-bg: #b18d00;
+  --workspace-card-button-hover: var(--button-honey-primary-hover);
+  --workspace-card-button-active: var(--button-honey-primary-active);
+  --workspace-card-button-stroke: var(--button-honey-stroke);
+  --workspace-card-button-focus: var(--button-honey-focus-ring);
+  --workspace-card-button-text: #ffffff;
+  --workspace-project-button-bg: var(--button-honey-tertiary);
+  --workspace-project-button-hover: var(--button-honey-primary-hover);
+  --workspace-project-button-active: var(--button-honey-hover);
+  --workspace-project-button-stroke: var(--button-honey-stroke);
+  --workspace-project-button-focus: var(--button-honey-focus-ring);
+  --workspace-project-button-text: var(--button-text-dark);
+}
+
+.dashboard-workspace-panel[data-theme="orange"] {
+  --workspace-surface: var(--workspace-orange-surface);
+  --workspace-text: #ffffff;
+  --workspace-nav-color: #ffffff;
+  --workspace-dash: rgba(255, 255, 255, 0.95);
+  --workspace-card-shell: var(--button-pistachio-secondary);
+  --workspace-card-button-bg: #ffc1c1;
+  --workspace-card-button-hover: var(--button-dustyrose-hover);
+  --workspace-card-button-active: var(--button-dustyrose-active);
+  --workspace-card-button-stroke: #4c4c4c;
+  --workspace-card-button-focus: var(--button-dustyrose-focus-ring);
+  --workspace-card-button-text: var(--button-text-dark);
+  --workspace-project-button-bg: #f3e5e5;
+  --workspace-project-button-hover: var(--button-dustyrose-hover);
+  --workspace-project-button-active: var(--button-dustyrose-active);
+  --workspace-project-button-stroke: #4c4c4c;
+  --workspace-project-button-focus: var(--button-dustyrose-focus-ring);
+  --workspace-project-button-text: var(--button-text-dark);
+}
+
+.workspace-panel-stage {
+  position: relative;
+}
+
+.project-copy {
+  max-width: min(52rem, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-heading {
+  --project-title-line-height: calc(var(--project-title-size) * 0.96);
+  --title-to-dashes-gap: clamp(0.75rem, 1vw, 1rem);
+  --dashes-height: 0.14rem;
+  --dashes-to-description-gap: clamp(1rem, 1.3vw, 1.25rem);
+  --custom-title-to-description-gap: clamp(1rem, 1.4vw, 1.4rem);
+  position: relative;
+  width: 100%;
+  height: clamp(8.25rem, 12vw, 10.5rem);
+}
+
+.project-title-hit-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 52rem);
+  min-height: 1.1em;
+}
+
+.project-description-hit-area {
+  position: absolute;
+  left: 0;
+  width: min(100%, 48rem);
+}
+
+.project-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: 1.1em;
+  font-size: var(--project-title-size);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  color: var(--workspace-text, var(--dashboard-text));
+  outline: none;
+}
+
+.project-underline-slot {
+  position: absolute;
+  top: calc(
+    var(--project-title-line-height) + var(--title-to-dashes-gap)
+  );
+  left: 0;
+  width: auto;
+  height: var(--dashes-height);
+  display: flex;
+  align-items: center;
+}
+
+.animated-dash-underline {
+  display: flex;
+  gap: clamp(0.4rem, 0.9vw, 0.7rem);
+}
+
+.animated-dash {
+  width: clamp(1.1rem, 1.8vw, 1.6rem);
+  height: 0.14rem;
+  background: var(--workspace-dash, rgba(255, 255, 255, 0.95));
+  opacity: 0.15;
+  animation: reveal-dash 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--dash-index) * 0.16s);
+}
+
+.project-description {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  max-width: min(48rem, 100%);
+  margin: 0;
+  font-size: var(--project-description-size);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  opacity: 0.92;
+  color: var(--workspace-text, var(--dashboard-text));
+  white-space: normal;
+  outline: none;
+}
+
+.project-heading--placeholder .project-description {
+  top: calc(
+    var(--project-title-line-height) + var(--title-to-dashes-gap) +
+      var(--dashes-height) + var(--dashes-to-description-gap)
+  );
+}
+
+.project-heading--custom .project-description {
+  top: calc(
+    var(--project-title-line-height) + var(--custom-title-to-description-gap)
+  );
+}
+
+.workspace-actions {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: clamp(1.5rem, 2vw, 2rem);
+}
+
+.workspace-action-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.workspace-action-button-card {
+  border: 1px solid var(--workspace-card-button-stroke);
+  background: var(--workspace-card-button-bg);
+  color: var(--workspace-card-button-text);
+}
+
+.workspace-action-button-card:hover {
+  background: var(--workspace-card-button-hover);
+  color: #ffffff;
+}
+
+.workspace-action-button-card:active {
+  background: var(--workspace-card-button-active);
+  color: #ffffff;
+}
+
+.workspace-action-button:focus-visible {
+  outline: none;
+}
+
+.workspace-action-button-card:focus {
+  box-shadow:
+    0 0 0 2px var(--workspace-surface),
+    0 0 0 4px var(--workspace-card-button-focus);
+}
+
+.workspace-action-button-project {
+  border: 1px solid var(--workspace-project-button-stroke);
+  background: var(--workspace-project-button-bg);
+  color: var(--workspace-project-button-text);
+}
+
+.workspace-action-button-project:hover {
+  background: var(--workspace-project-button-hover);
+  color: #ffffff;
+}
+
+.workspace-action-button-project:active {
+  background: var(--workspace-project-button-active);
+  color: #ffffff;
+}
+
+.workspace-action-button-project:focus {
+  box-shadow:
+    0 0 0 2px var(--workspace-surface),
+    0 0 0 4px var(--workspace-project-button-focus);
+}
+
+.workspace-nav {
+  position: absolute;
+  top: clamp(0.2rem, 0.6vw, 0.45rem);
+  background: transparent;
+  border: 0;
+  color: var(--workspace-nav-color, #ffffff);
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  font-weight: 200;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.workspace-nav-prev {
+  left: clamp(-3rem, -2.8vw, -2rem);
+}
+
+.workspace-top-controls {
+  position: absolute;
+  top: clamp(0.2rem, 0.6vw, 0.45rem);
+  right: var(--workspace-top-controls-right);
+  display: grid;
+  grid-template-columns:
+    var(--workspace-utility-column-width)
+    var(--workspace-nav-column-width);
+  align-items: center;
+  column-gap: var(--workspace-top-controls-gap);
+  z-index: 2;
+}
+
+.workspace-top-controls .workspace-nav-next {
+  position: static;
+  width: var(--workspace-nav-column-width);
+  display: inline-flex;
+  justify-content: center;
+}
+
+.workspace-project-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--workspace-nav-color, #ffffff);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.workspace-project-delete svg {
+  width: clamp(2rem, 3.7vw, 2.8rem);
+  height: clamp(2rem, 3.7vw, 2.8rem);
+}
+
+.workspace-project-delete:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.22rem;
+}
+
+@keyframes reveal-dash {
+  0%,
+  18%,
+  100% {
+    opacity: 0.15;
+    transform: scaleX(0.72);
+  }
+
+  28%,
+  70% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-shell-workspace-panel {
+    padding-top: clamp(2rem, 5vh, 3.5rem);
+  }
+
+  .project-copy {
+    max-width: min(42rem, 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-copy {
+    max-width: min(30rem, 100%);
+  }
+
+  .workspace-nav-prev {
+    left: 0;
+  }
+
+  .workspace-nav-next {
+    right: 0;
+  }
+
+  .project-heading {
+    height: clamp(7.25rem, 16vw, 9rem);
+  }
+
+  .project-description {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .project-heading {
+    height: clamp(6.8rem, 22vw, 8.4rem);
+  }
+
+  .workspace-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-dash {
+    animation: none;
+    opacity: 0.82;
+    transform: none;
+  }
+}
