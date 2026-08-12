@@ -1,6 +1,4 @@
-import {
-  type MutableRefObject
-} from "react";
+import type { MutableRefObject } from "react";
 import { useContentEditable } from "../hooks/useContentEditable";
 
 export type EditableContentTextProps = {
@@ -49,6 +47,9 @@ function EditableContentText({
       spellCheck={false}
       role="textbox"
       aria-label={ariaLabel}
+      onPointerDown={(event) => {
+        event.stopPropagation();
+      }}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
