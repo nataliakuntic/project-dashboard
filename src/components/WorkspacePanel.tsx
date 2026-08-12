@@ -1,4 +1,4 @@
-import { type TranslationSet } from "../translations";
+import type { TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
 import TrashIcon from "./icons/TrashIcon";
