@@ -8,6 +8,7 @@ export type EditableContentTextProps = {
   onCommit: (nextValue: string) => void;
   className: string;
   ariaLabel: string;
+  multiline?: boolean;
   maxLength?: number;
   elementRef?: MutableRefObject<HTMLElement | null>;
 };
@@ -19,6 +20,7 @@ function EditableContentText({
   onCommit,
   className,
   ariaLabel,
+  multiline = false,
   maxLength,
   elementRef
 }: EditableContentTextProps) {
@@ -34,6 +36,7 @@ function EditableContentText({
     value,
     placeholder,
     onCommit,
+    multiline,
     maxLength,
     elementRef
   });
@@ -42,10 +45,11 @@ function EditableContentText({
     <Element
       ref={contentEditableRef}
       className={className}
-      contentEditable
+      contentEditable="plaintext-only"
       suppressContentEditableWarning
       spellCheck={false}
       role="textbox"
+      aria-multiline={multiline ? true : undefined}
       aria-label={ariaLabel}
       onPointerDown={(event) => {
         event.stopPropagation();

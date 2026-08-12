@@ -1,5 +1,5 @@
 {
-  "name": "todoapp",
+  "name": "project-dashboard",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -31,6 +31,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",
     "globals": "^17.9.0",
+    "jsdom": "^29.1.1",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.67.0",
     "vite": "^5.4.1",

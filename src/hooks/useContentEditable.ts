@@ -20,6 +20,7 @@ type UseContentEditableParams = {
   value: string;
   placeholder: string;
   onCommit: (nextValue: string) => void;
+  multiline?: boolean;
   maxLength?: number;
   elementRef?: MutableRefObject<HTMLElement | null>;
 };
@@ -28,6 +29,7 @@ export function useContentEditable({
   value,
   placeholder,
   onCommit,
+  multiline = false,
   maxLength,
   elementRef
 }: UseContentEditableParams) {
@@ -83,7 +85,7 @@ export function useContentEditable({
       return;
     }
 
-    if (event.key === "Enter") {
+    if (!multiline && event.key === "Enter") {
       event.preventDefault();
       event.currentTarget.blur();
       return;

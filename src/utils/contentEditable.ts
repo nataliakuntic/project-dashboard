@@ -66,9 +66,11 @@ export function replaceSelectionWithText(text: string) {
   }
 
   const range = selection.getRangeAt(0);
+  const insertedTextNode = document.createTextNode(text);
   range.deleteContents();
-  range.insertNode(document.createTextNode(text));
-  range.collapse(false);
+  range.insertNode(insertedTextNode);
+  range.setStart(insertedTextNode, insertedTextNode.length);
+  range.collapse(true);
   selection.removeAllRanges();
   selection.addRange(range);
   return true;

@@ -39,6 +39,7 @@ function ProjectCard({
             onCommit={onTitleCommit}
             ariaLabel="Edit card title"
             placeholder={cardTitlePlaceholder}
+            multiline
           />
           <button
             type="button"
@@ -62,6 +63,7 @@ function ProjectCard({
           onCommit={onSubtitleCommit}
           ariaLabel="Edit card subtitle"
           placeholder={cardSubtitlePlaceholder}
+          multiline
         />
         <EditableContentText
           as="p"
@@ -70,6 +72,7 @@ function ProjectCard({
           onCommit={onDescriptionCommit}
           ariaLabel="Edit card description"
           placeholder={cardDescriptionPlaceholder}
+          multiline
         />
       </article>
     </div>

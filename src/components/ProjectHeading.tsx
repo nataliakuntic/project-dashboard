@@ -1,5 +1,4 @@
-import type { PointerEvent } from "react";
-import { useRef } from "react";
+import { type PointerEvent, useRef } from "react";
 import { placeCaretAtEnd } from "../utils/contentEditable";
 import EditableContentText from "./EditableContentText";
 
