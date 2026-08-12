@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Workspace } from "../features/dashboard/types";
 
 type ProjectBridgeSlide = {
@@ -57,7 +57,7 @@ function useWorkspaceCarousel({
     });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const previousWorkspaces = previousWorkspacesRef.current;
     const previousActiveWorkspaceId = previousActiveWorkspaceIdRef.current;
 
