@@ -1,7 +1,4 @@
-import type { KeyboardEvent, PointerEvent } from "react";
-import {
-  type TranslationSet
-} from "../translations";
+import { type TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
 import TrashIcon from "./icons/TrashIcon";
@@ -50,18 +47,6 @@ function WorkspacePanel({
 }: WorkspacePanelProps) {
   const workspaceLabel = workspace.title.trim() || uiText.projectTitlePlaceholder;
 
-  const handleWorkspaceDeletePointerDown = (
-    event: PointerEvent<HTMLButtonElement>
-  ) => {
-    event.stopPropagation();
-  };
-
-  const handleWorkspaceDeleteKeyDown = (
-    event: KeyboardEvent<HTMLButtonElement>
-  ) => {
-    event.stopPropagation();
-  };
-
   return (
     <section className="dashboard-workspace-panel" data-theme={workspace.theme}>
       <div className="dashboard-shell dashboard-shell-workspace-panel">
@@ -77,7 +62,7 @@ function WorkspacePanel({
             </button>
           ) : null}
 
-          <div className="project-copy" onPointerDown={(event) => event.stopPropagation()}>
+          <div className="project-copy">
             <ProjectHeading
               title={workspace.title}
               description={workspace.subtitle}
@@ -112,8 +97,6 @@ function WorkspacePanel({
                 className="workspace-project-delete"
                 aria-label={`${uiText.deleteProject} ${workspaceLabel}`}
                 onClick={onDeleteWorkspace}
-                onPointerDown={handleWorkspaceDeletePointerDown}
-                onKeyDown={handleWorkspaceDeleteKeyDown}
               >
                 <TrashIcon size={23} />
               </button>
