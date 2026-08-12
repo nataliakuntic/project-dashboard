@@ -57,49 +57,44 @@ function CardGrid({
       return;
     }
 
-    const oldIndex = cards.findIndex((card) => card.id === active.id);
-    const newIndex = cards.findIndex((card) => card.id === over.id);
-
-    if (oldIndex === -1 || newIndex === -1) {
+    if (typeof active.id !== "number" || typeof over.id !== "number") {
       return;
     }
 
-    onReorderCards(workspaceId, active.id as number, over.id as number);
+    onReorderCards(workspaceId, active.id, over.id);
   };
 
   return (
-    <div onPointerDown={(event) => event.stopPropagation()}>
-      <DndContext
-        sensors={cardSensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleCardDragEnd}
+    <DndContext
+      sensors={cardSensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleCardDragEnd}
+    >
+      <SortableContext
+        items={cards.map((card) => card.id)}
+        strategy={rectSortingStrategy}
       >
-        <SortableContext
-          items={cards.map((card) => card.id)}
-          strategy={rectSortingStrategy}
-        >
-          <div className="project-card-grid" aria-live="polite">
-            {cards.map((card) => (
-              <SortableCard
-                key={card.id}
-                card={card}
-                uiText={uiText}
-                onTitleCommit={(nextValue) =>
-                  onUpdateCard(card.id, "title", nextValue)
-                }
-                onSubtitleCommit={(nextValue) =>
-                  onUpdateCard(card.id, "subtitle", nextValue)
-                }
-                onDescriptionCommit={(nextValue) =>
-                  onUpdateCard(card.id, "description", nextValue)
-                }
-                onDelete={() => onDeleteCard(card.id)}
-              />
-            ))}
-          </div>
-        </SortableContext>
-      </DndContext>
-    </div>
+        <div className="project-card-grid" aria-live="polite">
+          {cards.map((card) => (
+            <SortableCard
+              key={card.id}
+              card={card}
+              uiText={uiText}
+              onTitleCommit={(nextValue) =>
+                onUpdateCard(card.id, "title", nextValue)
+              }
+              onSubtitleCommit={(nextValue) =>
+                onUpdateCard(card.id, "subtitle", nextValue)
+              }
+              onDescriptionCommit={(nextValue) =>
+                onUpdateCard(card.id, "description", nextValue)
+              }
+              onDelete={() => onDeleteCard(card.id)}
+            />
+          ))}
+        </div>
+      </SortableContext>
+    </DndContext>
   );
 }
 

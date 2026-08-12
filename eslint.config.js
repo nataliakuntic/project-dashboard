@@ -45,20 +45,6 @@ export default tseslint.config(
     }
   },
   {
-    files: ["**/*.test.{ts,tsx}"],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: {
-        ...globals.browser
-      },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    }
-  },
-  {
     files: ["eslint.config.js", "vite.config.ts"],
     languageOptions: {
       ecmaVersion: 2020,

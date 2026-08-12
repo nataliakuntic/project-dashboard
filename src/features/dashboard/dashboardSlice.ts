@@ -146,8 +146,6 @@ const dashboardSlice = createSlice({
       if (state.activeWorkspaceId === action.payload.workspaceId) {
         state.activeWorkspaceId =
           nextWorkspaces[Math.min(deleteIndex, nextWorkspaces.length - 1)].id;
-      } else if (!nextWorkspaces.some((workspace) => workspace.id === state.activeWorkspaceId)) {
-        state.activeWorkspaceId = nextWorkspaces[0].id;
       }
 
       state.workspaces = nextWorkspaces;

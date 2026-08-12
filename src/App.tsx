@@ -1,7 +1,5 @@
-import type { PointerEvent } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import WorkspacePanel from "./components/WorkspacePanel";
-import { WORKSPACE_THEMES } from "./features/dashboard/dashboardThemes";
 import {
   addCard,
   addWorkspace,
@@ -56,28 +54,11 @@ function App() {
   };
 
   const handleDeleteWorkspace = (workspaceId: number) => {
-    if (workspaces.length <= 1) {
-      return;
-    }
-
-    if (!workspaces.some((workspace) => workspace.id === workspaceId)) {
-      return;
-    }
-
     dispatch(deleteWorkspace({ workspaceId }));
   };
 
-  const handleHeaderLanguageSwitchPointerDown = (
-    event: PointerEvent<HTMLButtonElement>
-  ) => {
-    event.stopPropagation();
-  };
-
   return (
-    <main
-      className="project-dashboard"
-      data-active-workspace-theme={activeWorkspace?.theme ?? WORKSPACE_THEMES[0]}
-    >
+    <main className="project-dashboard" data-active-workspace-theme={activeWorkspace.theme}>
       <header className="dashboard-hero">
         <div className="dashboard-shell dashboard-shell-hero">
           <div className="dashboard-hero-row">
@@ -93,7 +74,6 @@ function App() {
                   aria-label="Use English"
                   aria-pressed={language === "en"}
                   onClick={() => dispatch(setLanguage({ language: "en" }))}
-                  onPointerDown={handleHeaderLanguageSwitchPointerDown}
                 >
                   EN
                 </button>
@@ -106,7 +86,6 @@ function App() {
                   aria-label="Bruk norsk"
                   aria-pressed={language === "no"}
                   onClick={() => dispatch(setLanguage({ language: "no" }))}
-                  onPointerDown={handleHeaderLanguageSwitchPointerDown}
                 >
                   NO
                 </button>

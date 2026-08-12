@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import type { RootState } from "../../app/store";
 import {
   selectActiveWorkspace,
-  selectActiveWorkspaceIndex,
   selectCanDeleteWorkspace,
   selectCanNavigateWorkspaces
 } from "./dashboardSelectors";
@@ -37,14 +36,6 @@ describe("dashboardSelectors", () => {
     const state = createState();
 
     expect(selectActiveWorkspace(state)).toEqual(state.dashboard.workspaces[1]);
-  });
-
-  it("selectActiveWorkspaceIndex derives the active workspace index", () => {
-    expect(selectActiveWorkspaceIndex(createState())).toBe(1);
-  });
-
-  it("selectActiveWorkspaceIndex falls back to 0 when the ID is missing", () => {
-    expect(selectActiveWorkspaceIndex(createState(999))).toBe(0);
   });
 
   it("selectCanNavigateWorkspaces returns true only when there is more than one workspace", () => {

@@ -17,15 +17,6 @@ export const selectActiveWorkspace = (state: RootState) => {
   );
 };
 
-export const selectActiveWorkspaceIndex = (state: RootState) => {
-  const dashboardState = selectDashboardState(state);
-  const activeWorkspaceIndex = dashboardState.workspaces.findIndex(
-    (workspace) => workspace.id === dashboardState.activeWorkspaceId
-  );
-
-  return activeWorkspaceIndex === -1 ? 0 : activeWorkspaceIndex;
-};
-
 export const selectCanNavigateWorkspaces = (state: RootState) =>
   selectWorkspaces(state).length > 1;
 
