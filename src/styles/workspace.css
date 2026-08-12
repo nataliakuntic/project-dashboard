@@ -234,7 +234,6 @@
   padding: 0.5rem 1.5rem;
   border-radius: 999px;
   cursor: pointer;
-  font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -381,10 +380,6 @@
 
   .workspace-nav-prev {
     left: 0;
-  }
-
-  .workspace-nav-next {
-    right: 0;
   }
 
   .project-heading {

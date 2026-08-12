@@ -76,7 +76,6 @@
 }
 
 .project-card-title {
-  font-family: "Inter", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 2rem;
@@ -84,7 +83,6 @@
 }
 
 .project-card-subtitle {
-  font-family: "Inter", sans-serif;
   font-weight: 300;
   font-style: italic;
   letter-spacing: 0.05em;
@@ -93,7 +91,6 @@
 }
 
 .project-card-description {
-  font-family: "Inter", sans-serif;
   font-weight: 300;
   line-height: 1.75rem;
   color: var(--project-card-description);
@@ -144,12 +141,7 @@
   }
 
   .project-card-container {
-    width: 100%;
     max-width: none;
-  }
-
-  .project-card-content {
-    width: 100%;
   }
 }
 

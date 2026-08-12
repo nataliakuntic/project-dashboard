@@ -45,18 +45,6 @@ function App() {
       dispatch(setActiveWorkspace({ workspaceId }))
   });
 
-  const handleAddProject = () => {
-    dispatch(addWorkspace());
-  };
-
-  const handleAddCard = (workspaceId: number) => {
-    dispatch(addCard({ workspaceId }));
-  };
-
-  const handleDeleteWorkspace = (workspaceId: number) => {
-    dispatch(deleteWorkspace({ workspaceId }));
-  };
-
   return (
     <main className="project-dashboard" data-active-workspace-theme={activeWorkspace.theme}>
       <header className="dashboard-hero">
@@ -115,9 +103,11 @@ function App() {
                   onGoPrev={goToPreviousWorkspace}
                   onGoNext={goToNextWorkspace}
                   canDeleteWorkspace={canDeleteWorkspace}
-                  onDeleteWorkspace={() => handleDeleteWorkspace(workspace.id)}
-                  onAddCard={() => handleAddCard(workspace.id)}
-                  onAddProject={handleAddProject}
+                  onDeleteWorkspace={() =>
+                    dispatch(deleteWorkspace({ workspaceId: workspace.id }))
+                  }
+                  onAddCard={() => dispatch(addCard({ workspaceId: workspace.id }))}
+                  onAddProject={() => dispatch(addWorkspace())}
                   onUpdateTitle={(nextValue) =>
                     dispatch(
                       updateWorkspace({
