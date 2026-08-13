@@ -237,6 +237,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+box-shadow: 0 3px 8px rgba(189, 189, 189, 0.12);
 }
 
 .workspace-action-button-card {
