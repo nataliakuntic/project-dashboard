@@ -9,8 +9,8 @@
   --workspace-card-button-focus: var(--button-honey-focus-ring);
   --workspace-card-button-text: var(--button-text-dark);
   --workspace-project-button-bg: var(--button-honey-tertiary);
-  --workspace-project-button-hover: var(--button-honey-secondary);
-  --workspace-project-button-active: var(--button-honey-hover);
+  --workspace-project-button-hover: var(--button-honey-hover);
+  --workspace-project-button-active: var(--button-honey-active);
   --workspace-project-button-stroke: var(--button-honey-stroke);
   --workspace-project-button-focus: var(--button-honey-focus-ring);
   --workspace-project-button-text: var(--button-text-dark);
