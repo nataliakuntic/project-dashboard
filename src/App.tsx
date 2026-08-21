@@ -50,7 +50,7 @@ function App() {
       <header className="dashboard-hero">
         <div className="dashboard-shell dashboard-shell-hero">
           <div className="dashboard-hero-row">
-            <h1 className="dashboard-heading">Project Dashboard</h1>
+            <h1 className="dashboard-heading">All My Sideprojects</h1>
 
             <div className="dashboard-language-controls">
               <div className="dashboard-language-switch">
