@@ -10,6 +10,11 @@ export const translations = {
     addCard: "Add card",
     addProject: "Add project",
     deleteProject: "Delete project",
+    deleteProjectDialogTitle: "Delete project?",
+    deleteProjectConfirmation: "Are you sure you want to delete",
+    deleteUntitledProjectConfirmation:
+      "Are you sure you want to delete this untitled project?",
+    cancel: "Cancel",
     previousWorkspace: "Previous workspace",
     nextWorkspace: "Next workspace"
   },
@@ -22,6 +27,11 @@ export const translations = {
     addCard: "Legg til kort",
     addProject: "Legg til prosjekt",
     deleteProject: "Slett prosjekt",
+    deleteProjectDialogTitle: "Slette prosjekt?",
+    deleteProjectConfirmation: "Er du sikker på at du vil slette",
+    deleteUntitledProjectConfirmation:
+      "Er du sikker på at du vil slette dette prosjektet uten tittel?",
+    cancel: "Avbryt",
     previousWorkspace: "Forrige prosjekt",
     nextWorkspace: "Neste prosjekt"
   }

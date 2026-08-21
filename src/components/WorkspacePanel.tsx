@@ -1,3 +1,5 @@
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
@@ -45,7 +47,92 @@ function WorkspacePanel({
   onDeleteCard,
   onReorderCards
 }: WorkspacePanelProps) {
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const cancelDeleteButtonRef = useRef<HTMLButtonElement | null>(null);
+  const deleteDialogTitleId = useId();
   const workspaceLabel = workspace.title.trim() || uiText.projectTitlePlaceholder;
+  const hasWorkspaceTitle = workspace.title.trim().length > 0;
+
+  useEffect(() => {
+    if (!isDeleteDialogOpen) {
+      return;
+    }
+
+    cancelDeleteButtonRef.current?.focus();
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsDeleteDialogOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [isDeleteDialogOpen]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return;
+    }
+
+    const dashboardElement = document.querySelector<HTMLElement>(".project-dashboard");
+
+    if (!dashboardElement) {
+      return;
+    }
+
+    dashboardElement.inert = isDeleteDialogOpen;
+
+    return () => {
+      dashboardElement.inert = false;
+    };
+  }, [isDeleteDialogOpen]);
+
+  const handleConfirmDeleteWorkspace = () => {
+    onDeleteWorkspace();
+    setIsDeleteDialogOpen(false);
+  };
+
+  const deleteDialog = isDeleteDialogOpen ? (
+    <div
+      className="workspace-delete-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={deleteDialogTitleId}
+    >
+      <h2
+        id={deleteDialogTitleId}
+        className="workspace-delete-dialog-title"
+      >
+        {uiText.deleteProjectDialogTitle}
+      </h2>
+      <p className="workspace-delete-dialog-copy">
+        {hasWorkspaceTitle
+          ? `${uiText.deleteProjectConfirmation} “${workspace.title.trim()}”?`
+          : uiText.deleteUntitledProjectConfirmation}
+      </p>
+      <div className="workspace-delete-dialog-actions">
+        <button
+          ref={cancelDeleteButtonRef}
+          type="button"
+          className="workspace-delete-dialog-button workspace-delete-dialog-button-cancel"
+          onClick={() => setIsDeleteDialogOpen(false)}
+        >
+          {uiText.cancel}
+        </button>
+        <button
+          type="button"
+          className="workspace-delete-dialog-button workspace-delete-dialog-button-confirm"
+          onClick={handleConfirmDeleteWorkspace}
+        >
+          {uiText.deleteProject}
+        </button>
+      </div>
+    </div>
+  ) : null;
 
   return (
     <section className="dashboard-workspace-panel" data-theme={workspace.theme}>
@@ -96,7 +183,7 @@ function WorkspacePanel({
                 type="button"
                 className="workspace-project-delete"
                 aria-label={`${uiText.deleteProject} ${workspaceLabel}`}
-                onClick={onDeleteWorkspace}
+                onClick={() => setIsDeleteDialogOpen(true)}
               >
                 <TrashIcon size={23} />
               </button>
@@ -124,6 +211,10 @@ function WorkspacePanel({
           onReorderCards={onReorderCards}
         />
       </div>
+
+      {deleteDialog && typeof document !== "undefined"
+        ? createPortal(deleteDialog, document.body)
+        : null}
     </section>
   );
 }
