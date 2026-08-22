@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import type { TranslationSet } from "../translations";
+import type { Language, TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
 import TrashIcon from "./icons/TrashIcon";
@@ -8,6 +8,7 @@ import ProjectHeading from "./ProjectHeading";
 
 type WorkspacePanelProps = {
   workspace: Workspace;
+  language: Language;
   uiText: TranslationSet;
   canNavigateWorkspaces: boolean;
   canDeleteWorkspace: boolean;
@@ -33,6 +34,7 @@ type WorkspacePanelProps = {
 
 function WorkspacePanel({
   workspace,
+  language,
   uiText,
   canNavigateWorkspaces,
   canDeleteWorkspace,
@@ -135,7 +137,11 @@ function WorkspacePanel({
   ) : null;
 
   return (
-    <section className="dashboard-workspace-panel" data-theme={workspace.theme}>
+    <section
+      className="dashboard-workspace-panel"
+      data-theme={workspace.theme}
+      data-language={language}
+    >
       <div className="dashboard-shell dashboard-shell-workspace-panel">
         <div className="workspace-panel-stage">
           {canNavigateWorkspaces ? (

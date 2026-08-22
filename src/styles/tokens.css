@@ -75,7 +75,7 @@ button {
 @media (max-width: 540px) {
   :root {
     --dashboard-side-padding: 1.25rem;
-    --project-title-size: clamp(2rem, 10vw, 3.25rem);
-    --project-description-size: clamp(1rem, 4.8vw, 1.12rem);
+    --project-title-size: clamp(1.9rem, 8vw, 2.75rem);
+    --project-description-size: clamp(0.9rem, 4vw, 1.05rem);
   }
 }

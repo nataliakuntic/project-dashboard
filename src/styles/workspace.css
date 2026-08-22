@@ -237,7 +237,7 @@
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.5;
-box-shadow: 0 3px 8px rgba(189, 189, 189, 0.12);
+  box-shadow: 0 3px 8px rgba(189, 189, 189, 0.12);
 }
 
 .workspace-action-button-card {
@@ -467,11 +467,51 @@ box-shadow: 0 3px 8px rgba(189, 189, 189, 0.12);
 
 @media (max-width: 540px) {
   .project-heading {
-    height: clamp(6.8rem, 22vw, 8.4rem);
+    height: clamp(6.2rem, 20vw, 7.4rem);
+  }
+
+  .project-title-hit-area {
+    width: calc(100% - 5.45rem);
+  }
+
+  .workspace-nav-prev {
+    display: none;
   }
 
   .workspace-actions {
-    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .workspace-top-controls {
+    right: 0;
+    grid-template-columns: 2rem 2.35rem;
+    column-gap: 0.35rem;
+  }
+
+  .workspace-top-controls .workspace-nav-next {
+    width: 2.35rem;
+    font-size: 2.35rem;
+  }
+
+  .workspace-project-delete svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .dashboard-workspace-panel[data-language="en"] .workspace-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .dashboard-workspace-panel[data-language="no"] .workspace-actions {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .dashboard-workspace-panel[data-language="no"] .workspace-action-button {
+    width: min(100%, 18rem);
   }
 }
 

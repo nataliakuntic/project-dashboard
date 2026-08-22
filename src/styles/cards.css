@@ -142,6 +142,26 @@
 
   .project-card-container {
     max-width: none;
+    padding: 1rem;
+  }
+
+  .project-card-content {
+    padding: 1.25rem;
+  }
+
+  .project-card-title {
+    font-size: 1.25rem;
+    line-height: 1.45rem;
+  }
+
+  .project-card-subtitle,
+  .project-card-description {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+  }
+
+  .card-delete-button {
+    padding: 0.35rem 0.45rem;
   }
 }
 

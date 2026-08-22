@@ -98,6 +98,7 @@ function App() {
               <div className="workspace-slide" key={key}>
                 <WorkspacePanel
                   workspace={workspace}
+                  language={language}
                   uiText={uiText}
                   canNavigateWorkspaces={canNavigateWorkspaces}
                   onGoPrev={goToPreviousWorkspace}
