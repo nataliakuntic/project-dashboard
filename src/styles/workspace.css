@@ -467,11 +467,61 @@
 
 @media (max-width: 540px) {
   .project-heading {
-    height: clamp(6.2rem, 20vw, 7.4rem);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: clamp(8.8rem, 30vw, 10.8rem);
   }
 
   .project-title-hit-area {
+    position: relative;
     width: calc(100% - 5.45rem);
+    min-height: 0;
+  }
+
+  .project-description-hit-area {
+    position: relative;
+    left: auto;
+    width: 100%;
+  }
+
+  .project-title {
+    position: relative;
+    white-space: normal;
+  }
+
+  .project-underline-slot {
+    position: relative;
+    top: auto;
+    margin-top: var(--title-to-dashes-gap);
+    min-height: var(--dashes-height);
+  }
+
+  .project-description {
+    position: relative;
+    left: auto;
+    max-width: 100%;
+  }
+
+  .project-heading--placeholder .project-description-hit-area {
+    margin-top: var(--dashes-to-description-gap);
+  }
+
+  .project-heading--placeholder .project-description {
+    top: auto;
+  }
+
+  .project-heading--custom .project-underline-slot {
+    margin-top: 0;
+    min-height: 0;
+  }
+
+  .project-heading--custom .project-description-hit-area {
+    margin-top: var(--custom-title-to-description-gap);
+  }
+
+  .project-heading--custom .project-description {
+    top: auto;
   }
 
   .workspace-nav-prev {

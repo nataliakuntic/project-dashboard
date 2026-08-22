@@ -162,4 +162,8 @@
   .dashboard-heading {
     max-width: 6ch;
   }
+
+  .dashboard-language-controls {
+    right: 0.5rem;
+  }
 }
