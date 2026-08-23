@@ -537,7 +537,12 @@
   .dashboard-workspace-panel[data-language="en"] .workspace-actions {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-end;
+  }
+
+  .dashboard-workspace-panel[data-language="en"] .workspace-action-button {
+    padding: 0.45rem 1.25rem;
+    font-size: 1.1rem;
   }
 
   .dashboard-workspace-panel[data-language="en"] .workspace-action-button-card {
