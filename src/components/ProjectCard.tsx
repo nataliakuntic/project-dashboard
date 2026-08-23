@@ -55,30 +55,6 @@ function ProjectCard({
             placeholder={cardTitlePlaceholder}
             multiline
           />
-          <div className="project-card-header-actions">
-            <button
-              ref={dragHandleRef}
-              type="button"
-              className="card-drag-handle"
-              aria-label={dragHandleAriaLabel}
-            >
-              <DragHandleIcon />
-            </button>
-            <button
-              type="button"
-              className="card-delete-button"
-              aria-label={`${deleteCardLabel} ${cardLabel}`}
-              onClick={onDelete}
-              onPointerDown={(event) => {
-                event.stopPropagation();
-              }}
-              onKeyDown={(event) => {
-                event.stopPropagation();
-              }}
-            >
-              <TrashIcon />
-            </button>
-          </div>
         </div>
         <EditableContentText
           as="p"
@@ -98,6 +74,30 @@ function ProjectCard({
           placeholder={cardDescriptionPlaceholder}
           multiline
         />
+        <div className="project-card-header-actions">
+          <button
+            ref={dragHandleRef}
+            type="button"
+            className="card-drag-handle"
+            aria-label={dragHandleAriaLabel}
+          >
+            <DragHandleIcon />
+          </button>
+          <button
+            type="button"
+            className="card-delete-button"
+            aria-label={`${deleteCardLabel} ${cardLabel}`}
+            onClick={onDelete}
+            onPointerDown={(event) => {
+              event.stopPropagation();
+            }}
+            onKeyDown={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            <TrashIcon />
+          </button>
+        </div>
       </article>
     </div>
   );
