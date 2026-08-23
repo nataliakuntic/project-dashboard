@@ -468,6 +468,17 @@
     padding-top: calc(clamp(2rem, 5vh, 3.5rem) - 0.15rem);
   }
 
+  .project-title-row {
+    grid-template-columns:
+      minmax(0, calc(100% - (2rem + 2.35rem + 0.35rem + 0.6rem)))
+      calc(2rem + 2.35rem + 0.35rem);
+    column-gap: 0.6rem;
+  }
+
+  .project-title-controls {
+    width: calc(2rem + 2.35rem + 0.35rem);
+  }
+
   .project-title-hit-area {
     width: 100%;
     min-height: 0;
@@ -499,12 +510,16 @@
   }
 
   .workspace-top-controls {
+    width: 100%;
+    height: 100%;
     grid-template-columns: 2rem 2.35rem;
+    align-items: center;
     column-gap: 0.35rem;
   }
 
   .workspace-project-delete,
   .workspace-top-controls .workspace-nav-next {
+    height: 100%;
     align-items: center;
     justify-content: center;
   }
