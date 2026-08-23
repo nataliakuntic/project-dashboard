@@ -547,6 +547,14 @@
   .workspace-top-controls .workspace-nav-next {
     width: 2.35rem;
     font-size: 2.35rem;
+    line-height: 1;
+    align-items: flex-start;
+    transform: translateY(0.04rem);
+  }
+
+  .workspace-project-delete {
+    align-self: start;
+    transform: translateY(0.1rem);
   }
 
   .workspace-project-delete svg {
