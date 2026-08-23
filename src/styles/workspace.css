@@ -301,7 +301,7 @@
 .workspace-nav-prev {
   position: absolute;
   top: 0;
-  left: clamp(-3rem, -2.8vw, -2rem);
+  left: clamp(-4rem, -3.5vw, -2.75rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;
