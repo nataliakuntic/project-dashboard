@@ -1,4 +1,4 @@
-import { type PointerEvent, useRef } from "react";
+import { type PointerEvent, type ReactNode, useRef } from "react";
 import { placeCaretAtEnd } from "../utils/contentEditable";
 import EditableContentText from "./EditableContentText";
 
@@ -7,6 +7,7 @@ const PROJECT_TITLE_MAX_LENGTH = 28;
 type ProjectHeadingProps = {
   title: string;
   subtitle: string;
+  titleControls?: ReactNode;
   titlePlaceholder: string;
   subtitlePlaceholder: string;
   editTitleLabel: string;
@@ -81,6 +82,7 @@ function EditableProjectField({
 function ProjectHeading({
   title,
   subtitle,
+  titleControls,
   titlePlaceholder,
   subtitlePlaceholder,
   editTitleLabel,
@@ -98,16 +100,21 @@ function ProjectHeading({
           : "project-heading--placeholder"
       }`}
     >
-      <EditableProjectField
-        as="h2"
-        value={title}
-        onCommit={onTitleCommit}
-        placeholder={titlePlaceholder}
-        hitAreaClassName="project-title-hit-area"
-        editableClassName="project-title"
-        ariaLabel={editTitleLabel}
-        maxLength={PROJECT_TITLE_MAX_LENGTH}
-      />
+      <div className="project-title-row">
+        <EditableProjectField
+          as="h2"
+          value={title}
+          onCommit={onTitleCommit}
+          placeholder={titlePlaceholder}
+          hitAreaClassName="project-title-hit-area"
+          editableClassName="project-title"
+          ariaLabel={editTitleLabel}
+          maxLength={PROJECT_TITLE_MAX_LENGTH}
+        />
+        {titleControls ? (
+          <div className="project-title-controls">{titleControls}</div>
+        ) : null}
+      </div>
       <div className="project-underline-slot" aria-hidden="true">
         {!hasCustomTitle && <AnimatedDashUnderline />}
       </div>
