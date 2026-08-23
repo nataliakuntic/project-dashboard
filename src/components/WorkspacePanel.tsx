@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import type { Language, TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
+import ChevronRightIcon from "./icons/ChevronRightIcon";
 import TrashIcon from "./icons/TrashIcon";
 import ProjectHeading from "./ProjectHeading";
 
@@ -231,7 +232,7 @@ function WorkspacePanel({
                 onClick={onGoNext}
                 aria-label={uiText.nextWorkspace}
               >
-                <span aria-hidden="true">›</span>
+                <ChevronRightIcon />
               </button>
             ) : null}
           </div>
