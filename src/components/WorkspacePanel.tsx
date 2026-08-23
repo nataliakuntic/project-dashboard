@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import type { Language, TranslationSet } from "../translations";
 import type { Workspace } from "../features/dashboard/types";
 import CardGrid from "./CardGrid";
+import ChevronLeftIcon from "./icons/ChevronLeftIcon";
 import ChevronRightIcon from "./icons/ChevronRightIcon";
 import TrashIcon from "./icons/TrashIcon";
 import ProjectHeading from "./ProjectHeading";
@@ -178,7 +179,7 @@ function WorkspacePanel({
               onClick={onGoPrev}
               aria-label={uiText.previousWorkspace}
             >
-              <span aria-hidden="true">‹</span>
+              <ChevronLeftIcon />
             </button>
           ) : null}
 
@@ -188,6 +189,32 @@ function WorkspacePanel({
               subtitle={workspace.subtitle}
               onTitleCommit={onUpdateTitle}
               onSubtitleCommit={onUpdateSubtitle}
+              titleControls={
+                <div className="workspace-top-controls">
+                  {canDeleteWorkspace ? (
+                    <button
+                      ref={deleteWorkspaceButtonRef}
+                      type="button"
+                      className="workspace-project-delete"
+                      aria-label={`${uiText.deleteProject} ${workspaceLabel}`}
+                      onClick={handleOpenDeleteDialog}
+                    >
+                      <TrashIcon size={23} />
+                    </button>
+                  ) : null}
+
+                  {canNavigateWorkspaces ? (
+                    <button
+                      type="button"
+                      className="workspace-nav workspace-nav-next"
+                      onClick={onGoNext}
+                      aria-label={uiText.nextWorkspace}
+                    >
+                      <ChevronRightIcon />
+                    </button>
+                  ) : null}
+                </div>
+              }
               titlePlaceholder={uiText.projectTitlePlaceholder}
               subtitlePlaceholder={uiText.projectSubtitlePlaceholder}
               editTitleLabel={uiText.editProjectTitle}
@@ -210,31 +237,6 @@ function WorkspacePanel({
                 {uiText.addProject}
               </button>
             </div>
-          </div>
-
-          <div className="workspace-top-controls">
-            {canDeleteWorkspace ? (
-              <button
-                ref={deleteWorkspaceButtonRef}
-                type="button"
-                className="workspace-project-delete"
-                aria-label={`${uiText.deleteProject} ${workspaceLabel}`}
-                onClick={handleOpenDeleteDialog}
-              >
-                <TrashIcon size={23} />
-              </button>
-            ) : null}
-
-            {canNavigateWorkspaces ? (
-              <button
-                type="button"
-                className="workspace-nav workspace-nav-next"
-                onClick={onGoNext}
-                aria-label={uiText.nextWorkspace}
-              >
-                <ChevronRightIcon />
-              </button>
-            ) : null}
           </div>
         </div>
 
