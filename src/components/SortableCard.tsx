@@ -37,8 +37,16 @@ function SortableCard({
     id: card.id
   });
 
+  const sortableTransform =
+    isMobileViewport && transform
+      ? {
+          ...transform,
+          x: 0
+        }
+      : transform;
+
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Transform.toString(sortableTransform),
     transition
   };
 

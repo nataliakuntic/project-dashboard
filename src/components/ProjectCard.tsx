@@ -1,5 +1,6 @@
 import type { HTMLAttributes, Ref } from "react";
 import EditableContentText from "./EditableContentText";
+import DragHandleIcon from "./icons/DragHandleIcon";
 import TrashIcon from "./icons/TrashIcon";
 
 export type ProjectCardProps = {
@@ -53,11 +54,7 @@ function ProjectCard({
               type="button"
               className="card-drag-handle"
             >
-              <span className="card-drag-handle-grip" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </span>
+              <DragHandleIcon />
             </button>
             <button
               type="button"
