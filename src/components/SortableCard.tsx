@@ -1,4 +1,4 @@
-import { type HTMLAttributes, type TransitionEvent, useEffect, useRef, useState } from "react";
+import { type HTMLAttributes, type TransitionEvent, useRef, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { TranslationSet } from "../translations";
@@ -7,6 +7,7 @@ import ProjectCard from "./ProjectCard";
 
 type SortableCardProps = {
   card: Card;
+  isMobileViewport: boolean;
   uiText: TranslationSet;
   onTitleCommit: (nextValue: string) => void;
   onSubtitleCommit: (nextValue: string) => void;
@@ -16,6 +17,7 @@ type SortableCardProps = {
 
 function SortableCard({
   card,
+  isMobileViewport,
   uiText,
   onTitleCommit,
   onSubtitleCommit,
@@ -23,7 +25,6 @@ function SortableCard({
   onDelete
 }: SortableCardProps) {
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const hasCompletedDeleteRef = useRef(false);
   const {
     attributes,
@@ -37,37 +38,10 @@ function SortableCard({
     id: card.id
   });
 
-  const sortableTransform =
-    isMobileViewport && transform
-      ? {
-          ...transform,
-          x: 0
-        }
-      : transform;
-
   const style = {
-    transform: CSS.Transform.toString(sortableTransform),
+    transform: CSS.Transform.toString(transform),
     transition
   };
-
-  useEffect(() => {
-    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
-      return;
-    }
-
-    const mediaQueryList = window.matchMedia("(max-width: 540px)");
-    const updateViewportState = (event?: MediaQueryListEvent) => {
-      setIsMobileViewport(event?.matches ?? mediaQueryList.matches);
-    };
-
-    updateViewportState();
-
-    mediaQueryList.addEventListener("change", updateViewportState);
-
-    return () => {
-      mediaQueryList.removeEventListener("change", updateViewportState);
-    };
-  }, []);
 
   const desktopActivatorProps =
     !isDeleting && !isMobileViewport

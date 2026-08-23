@@ -5,7 +5,8 @@ import {
   closestCenter,
   useSensor,
   useSensors,
-  type DragEndEvent
+  type DragEndEvent,
+  type Modifier
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -14,7 +15,13 @@ import {
 } from "@dnd-kit/sortable";
 import type { TranslationSet } from "../translations";
 import type { Card } from "../features/dashboard/types";
+import useIsMobileViewport from "../hooks/useIsMobileViewport";
 import SortableCard from "./SortableCard";
+
+const restrictToVerticalAxis: Modifier = ({ transform }) => ({
+  ...transform,
+  x: 0
+});
 
 type CardGridProps = {
   workspaceId: number;
@@ -41,6 +48,7 @@ function CardGrid({
   onDeleteCard,
   onReorderCards
 }: CardGridProps) {
+  const isMobileViewport = useIsMobileViewport();
   const cardSensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -68,6 +76,7 @@ function CardGrid({
     <DndContext
       sensors={cardSensors}
       collisionDetection={closestCenter}
+      modifiers={isMobileViewport ? [restrictToVerticalAxis] : undefined}
       onDragEnd={handleCardDragEnd}
     >
       <SortableContext
@@ -79,6 +88,7 @@ function CardGrid({
             <SortableCard
               key={card.id}
               card={card}
+              isMobileViewport={isMobileViewport}
               uiText={uiText}
               onTitleCommit={(nextValue) =>
                 onUpdateCard(card.id, "title", nextValue)
