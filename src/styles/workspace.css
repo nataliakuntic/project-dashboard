@@ -155,6 +155,7 @@
 }
 
 .project-title-hit-area {
+  position: relative;
   width: min(100%, 52rem);
   min-height: 1.1em;
 }
@@ -166,6 +167,7 @@
 }
 
 .project-title {
+  position: relative;
   width: 100%;
   max-width: 100%;
   margin: 0;
