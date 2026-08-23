@@ -121,7 +121,7 @@
 }
 
 .project-copy {
-  max-width: min(52rem, 100%);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -138,10 +138,23 @@
   height: clamp(8.25rem, 12vw, 10.5rem);
 }
 
+.project-title-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  width: 100%;
+}
+
+.project-title-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: var(--project-title-line-height);
+  min-width: 0;
+}
+
 .project-title-hit-area {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: min(100%, 52rem);
   min-height: 1.1em;
 }
@@ -153,9 +166,6 @@
 }
 
 .project-title {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -307,14 +317,11 @@
 }
 
 .workspace-top-controls {
-  position: absolute;
-  top: clamp(0.2rem, 0.6vw, 0.45rem);
-  right: var(--workspace-top-controls-right);
   display: grid;
   grid-template-columns:
     var(--workspace-utility-column-width)
     var(--workspace-nav-column-width);
-  align-items: center;
+  align-items: start;
   column-gap: var(--workspace-top-controls-gap);
   z-index: 2;
 }
@@ -447,17 +454,9 @@
   .dashboard-shell-workspace-panel {
     padding-top: clamp(2rem, 5vh, 3.5rem);
   }
-
-  .project-copy {
-    max-width: min(42rem, 100%);
-  }
 }
 
 @media (max-width: 768px) {
-  .project-copy {
-    max-width: min(30rem, 100%);
-  }
-
   .workspace-nav-prev {
     left: 0;
   }
@@ -483,8 +482,7 @@
   }
 
   .project-title-hit-area {
-    position: relative;
-    width: calc(100% - 5.45rem);
+    width: 100%;
     min-height: 0;
   }
 
@@ -495,7 +493,6 @@
   }
 
   .project-title {
-    position: relative;
     white-space: normal;
   }
 
@@ -543,17 +540,12 @@
   }
 
   .workspace-top-controls {
-    top: 0;
-    right: 0;
-    height: calc(var(--project-title-size) * 0.96);
     grid-template-columns: 2rem 2.35rem;
-    align-items: center;
     column-gap: 0.35rem;
   }
 
   .workspace-project-delete,
   .workspace-top-controls .workspace-nav-next {
-    height: 100%;
     align-items: center;
     justify-content: center;
   }
