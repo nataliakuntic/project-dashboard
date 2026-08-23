@@ -83,7 +83,7 @@ function App() {
         </div>
       </header>
 
-      <section className="dashboard-workspace" aria-label="Project workspace">
+      <section className="dashboard-workspace" aria-label={uiText.projectWorkspace}>
         <div className="workspace-viewport">
           <div
             className={`workspace-track${

@@ -51,9 +51,6 @@
   font-weight: 800;
   line-height: 0.92;
   letter-spacing: -0.025em;
-}
-
-.dashboard-heading {
   margin: 0;
   padding-block: var(--dashboard-top-padding);
   text-wrap: balance;

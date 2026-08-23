@@ -1,4 +1,4 @@
-import type { HTMLAttributes, Ref } from "react";
+import type { Ref } from "react";
 import EditableContentText from "./EditableContentText";
 import DragHandleIcon from "./icons/DragHandleIcon";
 import TrashIcon from "./icons/TrashIcon";
@@ -10,11 +10,15 @@ export type ProjectCardProps = {
   cardTitlePlaceholder: string;
   cardSubtitlePlaceholder: string;
   cardDescriptionPlaceholder: string;
+  editCardTitleLabel: string;
+  editCardSubtitleLabel: string;
+  editCardDescriptionLabel: string;
+  deleteCardLabel: string;
   onTitleCommit: (nextValue: string) => void;
   onSubtitleCommit: (nextValue: string) => void;
   onDescriptionCommit: (nextValue: string) => void;
   onDelete: () => void;
-  dragHandleProps: HTMLAttributes<HTMLButtonElement>;
+  dragHandleAriaLabel: string;
   dragHandleRef?: Ref<HTMLButtonElement>;
 };
 
@@ -25,11 +29,15 @@ function ProjectCard({
   cardTitlePlaceholder,
   cardSubtitlePlaceholder,
   cardDescriptionPlaceholder,
+  editCardTitleLabel,
+  editCardSubtitleLabel,
+  editCardDescriptionLabel,
+  deleteCardLabel,
   onTitleCommit,
   onSubtitleCommit,
   onDescriptionCommit,
   onDelete,
-  dragHandleProps,
+  dragHandleAriaLabel,
   dragHandleRef
 }: ProjectCardProps) {
   const cardLabel = title.trim() || cardTitlePlaceholder;
@@ -43,23 +51,23 @@ function ProjectCard({
             className="project-card-title"
             value={title}
             onCommit={onTitleCommit}
-            ariaLabel="Edit card title"
+            ariaLabel={editCardTitleLabel}
             placeholder={cardTitlePlaceholder}
             multiline
           />
           <div className="project-card-header-actions">
             <button
-              {...dragHandleProps}
               ref={dragHandleRef}
               type="button"
               className="card-drag-handle"
+              aria-label={dragHandleAriaLabel}
             >
               <DragHandleIcon />
             </button>
             <button
               type="button"
               className="card-delete-button"
-              aria-label={`Delete ${cardLabel}`}
+              aria-label={`${deleteCardLabel} ${cardLabel}`}
               onClick={onDelete}
               onPointerDown={(event) => {
                 event.stopPropagation();
@@ -77,7 +85,7 @@ function ProjectCard({
           className="project-card-subtitle"
           value={subtitle}
           onCommit={onSubtitleCommit}
-          ariaLabel="Edit card subtitle"
+          ariaLabel={editCardSubtitleLabel}
           placeholder={cardSubtitlePlaceholder}
           multiline
         />
@@ -86,7 +94,7 @@ function ProjectCard({
           className="project-card-description"
           value={description}
           onCommit={onDescriptionCommit}
-          ariaLabel="Edit card description"
+          ariaLabel={editCardDescriptionLabel}
           placeholder={cardDescriptionPlaceholder}
           multiline
         />

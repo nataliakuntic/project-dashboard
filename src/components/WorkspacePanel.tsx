@@ -51,6 +51,9 @@ function WorkspacePanel({
 }: WorkspacePanelProps) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const cancelDeleteButtonRef = useRef<HTMLButtonElement | null>(null);
+  const deleteWorkspaceButtonRef = useRef<HTMLButtonElement | null>(null);
+  const shouldRestoreDeleteTriggerFocusRef = useRef(false);
+  const wasDeleteDialogOpenRef = useRef(false);
   const deleteDialogTitleId = useId();
   const workspaceLabel = workspace.title.trim() || uiText.projectTitlePlaceholder;
   const hasWorkspaceTitle = workspace.title.trim().length > 0;
@@ -76,7 +79,20 @@ function WorkspacePanel({
   }, [isDeleteDialogOpen]);
 
   useEffect(() => {
-    if (typeof document === "undefined") {
+    if (
+      wasDeleteDialogOpenRef.current &&
+      !isDeleteDialogOpen &&
+      shouldRestoreDeleteTriggerFocusRef.current
+    ) {
+      deleteWorkspaceButtonRef.current?.focus();
+      shouldRestoreDeleteTriggerFocusRef.current = false;
+    }
+
+    wasDeleteDialogOpenRef.current = isDeleteDialogOpen;
+  }, [isDeleteDialogOpen]);
+
+  useEffect(() => {
+    if (!isDeleteDialogOpen || typeof document === "undefined") {
       return;
     }
 
@@ -86,14 +102,24 @@ function WorkspacePanel({
       return;
     }
 
-    dashboardElement.inert = isDeleteDialogOpen;
+    dashboardElement.inert = true;
 
     return () => {
       dashboardElement.inert = false;
     };
   }, [isDeleteDialogOpen]);
 
+  const handleOpenDeleteDialog = () => {
+    shouldRestoreDeleteTriggerFocusRef.current = true;
+    setIsDeleteDialogOpen(true);
+  };
+
+  const handleCloseDeleteDialog = () => {
+    setIsDeleteDialogOpen(false);
+  };
+
   const handleConfirmDeleteWorkspace = () => {
+    shouldRestoreDeleteTriggerFocusRef.current = false;
     onDeleteWorkspace();
     setIsDeleteDialogOpen(false);
   };
@@ -121,7 +147,7 @@ function WorkspacePanel({
           ref={cancelDeleteButtonRef}
           type="button"
           className="workspace-delete-dialog-button workspace-delete-dialog-button-cancel"
-          onClick={() => setIsDeleteDialogOpen(false)}
+          onClick={handleCloseDeleteDialog}
         >
           {uiText.cancel}
         </button>
@@ -158,11 +184,13 @@ function WorkspacePanel({
           <div className="project-copy">
             <ProjectHeading
               title={workspace.title}
-              description={workspace.subtitle}
+              subtitle={workspace.subtitle}
               onTitleCommit={onUpdateTitle}
-              onDescriptionCommit={onUpdateSubtitle}
+              onSubtitleCommit={onUpdateSubtitle}
               titlePlaceholder={uiText.projectTitlePlaceholder}
-              descriptionPlaceholder={uiText.projectSubtitlePlaceholder}
+              subtitlePlaceholder={uiText.projectSubtitlePlaceholder}
+              editTitleLabel={uiText.editProjectTitle}
+              editSubtitleLabel={uiText.editProjectSubtitle}
             />
 
             <div className="workspace-actions">
@@ -186,10 +214,11 @@ function WorkspacePanel({
           <div className="workspace-top-controls">
             {canDeleteWorkspace ? (
               <button
+                ref={deleteWorkspaceButtonRef}
                 type="button"
                 className="workspace-project-delete"
                 aria-label={`${uiText.deleteProject} ${workspaceLabel}`}
-                onClick={() => setIsDeleteDialogOpen(true)}
+                onClick={handleOpenDeleteDialog}
               >
                 <TrashIcon size={23} />
               </button>

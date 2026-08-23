@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 
 const MOBILE_VIEWPORT_QUERY = "(max-width: 540px)";
 
+function getInitialViewportState() {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return false;
+  }
+
+  return window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
+}
+
 function useIsMobileViewport() {
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(getInitialViewportState);
 
   useEffect(() => {
     if (typeof window === "undefined" || typeof window.matchMedia !== "function") {

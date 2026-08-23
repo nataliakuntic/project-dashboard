@@ -6,11 +6,13 @@ const PROJECT_TITLE_MAX_LENGTH = 28;
 
 type ProjectHeadingProps = {
   title: string;
-  description: string;
+  subtitle: string;
   titlePlaceholder: string;
-  descriptionPlaceholder: string;
+  subtitlePlaceholder: string;
+  editTitleLabel: string;
+  editSubtitleLabel: string;
   onTitleCommit: (nextValue: string) => void;
-  onDescriptionCommit: (nextValue: string) => void;
+  onSubtitleCommit: (nextValue: string) => void;
 };
 
 type EditableProjectFieldProps = {
@@ -78,11 +80,13 @@ function EditableProjectField({
 
 function ProjectHeading({
   title,
-  description,
+  subtitle,
   titlePlaceholder,
-  descriptionPlaceholder,
+  subtitlePlaceholder,
+  editTitleLabel,
+  editSubtitleLabel,
   onTitleCommit,
-  onDescriptionCommit
+  onSubtitleCommit
 }: ProjectHeadingProps) {
   const hasCustomTitle = title.trim().length > 0;
 
@@ -101,7 +105,7 @@ function ProjectHeading({
         placeholder={titlePlaceholder}
         hitAreaClassName="project-title-hit-area"
         editableClassName="project-title"
-        ariaLabel="Edit project title"
+        ariaLabel={editTitleLabel}
         maxLength={PROJECT_TITLE_MAX_LENGTH}
       />
       <div className="project-underline-slot" aria-hidden="true">
@@ -109,12 +113,12 @@ function ProjectHeading({
       </div>
       <EditableProjectField
         as="p"
-        value={description}
-        onCommit={onDescriptionCommit}
-        placeholder={descriptionPlaceholder}
+        value={subtitle}
+        onCommit={onSubtitleCommit}
+        placeholder={subtitlePlaceholder}
         hitAreaClassName="project-description-hit-area"
         editableClassName="project-description"
-        ariaLabel="Edit project description"
+        ariaLabel={editSubtitleLabel}
       />
     </div>
   );

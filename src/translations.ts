@@ -4,9 +4,15 @@ export const translations = {
   en: {
     projectTitlePlaceholder: "Your Project",
     projectSubtitlePlaceholder: "Describe your project in one short sentence",
+    editProjectTitle: "Edit project title",
+    editProjectSubtitle: "Edit project subtitle",
     cardTitlePlaceholder: "Untitled card",
     cardSubtitlePlaceholder: "Add a short subtitle",
     cardDescriptionPlaceholder: "Write a note, task, or idea here.",
+    editCardTitle: "Edit card title",
+    editCardSubtitle: "Edit card subtitle",
+    editCardDescription: "Edit card description",
+    deleteCard: "Delete card",
     moveCard: "Move card",
     addCard: "Add card",
     addProject: "Add project",
@@ -17,14 +23,21 @@ export const translations = {
       "Are you sure you want to delete this untitled project?",
     cancel: "Cancel",
     previousWorkspace: "Previous workspace",
-    nextWorkspace: "Next workspace"
+    nextWorkspace: "Next workspace",
+    projectWorkspace: "Project workspace"
   },
   no: {
     projectTitlePlaceholder: "Prosjektet ditt",
     projectSubtitlePlaceholder: "Beskriv prosjektet ditt med én kort setning",
+    editProjectTitle: "Rediger prosjekttittel",
+    editProjectSubtitle: "Rediger prosjektundertittel",
     cardTitlePlaceholder: "Kort uten tittel",
     cardSubtitlePlaceholder: "Legg til en kort undertittel",
     cardDescriptionPlaceholder: "Skriv et notat, en oppgave eller en idé her.",
+    editCardTitle: "Rediger korttittel",
+    editCardSubtitle: "Rediger kortundertittel",
+    editCardDescription: "Rediger kortbeskrivelse",
+    deleteCard: "Slett kort",
     moveCard: "Flytt kort",
     addCard: "Legg til kort",
     addProject: "Legg til prosjekt",
@@ -35,7 +48,8 @@ export const translations = {
       "Er du sikker på at du vil slette dette prosjektet uten tittel?",
     cancel: "Avbryt",
     previousWorkspace: "Forrige prosjekt",
-    nextWorkspace: "Neste prosjekt"
+    nextWorkspace: "Neste prosjekt",
+    projectWorkspace: "Prosjektområde"
   }
 } as const;
 
