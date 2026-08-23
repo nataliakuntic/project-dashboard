@@ -165,5 +165,6 @@
 
   .dashboard-language-controls {
     right: 0.5rem;
+    display: block;
   }
 }
