@@ -560,6 +560,14 @@
     justify-content: center;
   }
 
+  .dashboard-workspace-panel[data-language="en"] .workspace-action-button-card {
+    order: 2;
+  }
+
+  .dashboard-workspace-panel[data-language="en"] .workspace-action-button-project {
+    order: 1;
+  }
+
   .dashboard-workspace-panel[data-language="no"] .workspace-actions {
     flex-direction: column;
     flex-wrap: nowrap;
