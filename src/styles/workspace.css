@@ -470,7 +470,6 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    min-height: clamp(8.8rem, 30vw, 10.8rem);
   }
 
   .project-title-hit-area {
@@ -530,11 +529,14 @@
 
   .workspace-actions {
     width: 100%;
+    margin-top: 0.85rem;
   }
 
   .workspace-top-controls {
+    top: 0;
     right: 0;
     grid-template-columns: 2rem 2.35rem;
+    align-items: start;
     column-gap: 0.35rem;
   }
 
