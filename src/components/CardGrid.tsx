@@ -1,4 +1,7 @@
+import type { Plugins } from "@dnd-kit/abstract";
 import {
+  AutoScroller,
+  type DragDropManager,
   KeyboardSensor,
   PointerActivationConstraints,
   PointerSensor
@@ -20,6 +23,9 @@ const CARD_SENSORS = [
   }),
   KeyboardSensor
 ];
+
+const CARD_DND_PLUGINS = (defaults: Plugins<DragDropManager>) =>
+  defaults.filter((plugin) => plugin !== AutoScroller);
 
 type CardGridProps = {
   workspaceId: number;
@@ -69,7 +75,11 @@ function CardGrid({
   };
 
   return (
-    <DragDropProvider sensors={CARD_SENSORS} onDragEnd={handleCardDragEnd}>
+    <DragDropProvider
+      plugins={CARD_DND_PLUGINS}
+      sensors={CARD_SENSORS}
+      onDragEnd={handleCardDragEnd}
+    >
       <div className="project-card-grid">
         {cards.map((card, index) => (
           <SortableCard
