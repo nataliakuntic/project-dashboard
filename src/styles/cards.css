@@ -182,7 +182,8 @@
   }
 
   .project-card-header-actions {
-    justify-content: flex-end;
+    width: 100%;
+    justify-content: space-between;
     margin-top: 1rem;
   }
 

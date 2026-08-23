@@ -76,14 +76,6 @@ function ProjectCard({
         />
         <div className="project-card-header-actions">
           <button
-            ref={dragHandleRef}
-            type="button"
-            className="card-drag-handle"
-            aria-label={dragHandleAriaLabel}
-          >
-            <DragHandleIcon />
-          </button>
-          <button
             type="button"
             className="card-delete-button"
             aria-label={`${deleteCardLabel} ${cardLabel}`}
@@ -96,6 +88,14 @@ function ProjectCard({
             }}
           >
             <TrashIcon />
+          </button>
+          <button
+            ref={dragHandleRef}
+            type="button"
+            className="card-drag-handle"
+            aria-label={dragHandleAriaLabel}
+          >
+            <DragHandleIcon />
           </button>
         </div>
       </article>
