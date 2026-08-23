@@ -465,7 +465,7 @@
 
 @media (max-width: 540px) {
   .dashboard-shell-workspace-panel {
-    padding-top: calc(clamp(2rem, 5vh, 3.5rem) - 0.15rem);
+    padding-top: calc(clamp(2rem, 5vh, 3.5rem) - 0.3rem);
   }
 
   .project-title-row {
@@ -506,7 +506,7 @@
 
   .workspace-actions {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .workspace-top-controls {
@@ -538,11 +538,12 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    gap: 0.65rem;
   }
 
   .dashboard-workspace-panel[data-language="en"] .workspace-action-button {
-    padding: 0.45rem 1.25rem;
-    font-size: 1.1rem;
+    padding: 0.4rem 1.1rem;
+    font-size: 1.05rem;
   }
 
   .dashboard-workspace-panel[data-language="en"] .workspace-action-button-card {
