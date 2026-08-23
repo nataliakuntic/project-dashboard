@@ -1,3 +1,4 @@
+import type { HTMLAttributes, Ref } from "react";
 import EditableContentText from "./EditableContentText";
 import TrashIcon from "./icons/TrashIcon";
 
@@ -12,6 +13,8 @@ export type ProjectCardProps = {
   onSubtitleCommit: (nextValue: string) => void;
   onDescriptionCommit: (nextValue: string) => void;
   onDelete: () => void;
+  dragHandleProps: HTMLAttributes<HTMLButtonElement>;
+  dragHandleRef?: Ref<HTMLButtonElement>;
 };
 
 function ProjectCard({
@@ -24,7 +27,9 @@ function ProjectCard({
   onTitleCommit,
   onSubtitleCommit,
   onDescriptionCommit,
-  onDelete
+  onDelete,
+  dragHandleProps,
+  dragHandleRef
 }: ProjectCardProps) {
   const cardLabel = title.trim() || cardTitlePlaceholder;
 
@@ -41,20 +46,34 @@ function ProjectCard({
             placeholder={cardTitlePlaceholder}
             multiline
           />
-          <button
-            type="button"
-            className="card-delete-button"
-            aria-label={`Delete ${cardLabel}`}
-            onClick={onDelete}
-            onPointerDown={(event) => {
-              event.stopPropagation();
-            }}
-            onKeyDown={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            <TrashIcon />
-          </button>
+          <div className="project-card-header-actions">
+            <button
+              {...dragHandleProps}
+              ref={dragHandleRef}
+              type="button"
+              className="card-drag-handle"
+            >
+              <span className="card-drag-handle-grip" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+            <button
+              type="button"
+              className="card-delete-button"
+              aria-label={`Delete ${cardLabel}`}
+              onClick={onDelete}
+              onPointerDown={(event) => {
+                event.stopPropagation();
+              }}
+              onKeyDown={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              <TrashIcon />
+            </button>
+          </div>
         </div>
         <EditableContentText
           as="p"

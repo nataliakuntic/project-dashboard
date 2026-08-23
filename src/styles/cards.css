@@ -64,6 +64,12 @@
   gap: 1rem;
 }
 
+.project-card-header-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
 .project-card-title,
 .project-card-subtitle,
 .project-card-description {
@@ -106,6 +112,10 @@
   color: var(--workspace-delete-stroke, var(--button-pistachio-stroke));
   border-radius: 0;
   cursor: pointer;
+}
+
+.card-drag-handle {
+  display: none;
 }
 
 .card-delete-button:hover {
@@ -162,6 +172,42 @@
 
   .card-delete-button {
     padding: 0.35rem 0.45rem;
+  }
+
+  .card-drag-handle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.4rem;
+    min-height: 2.4rem;
+    padding: 0.35rem 0.45rem;
+    border: 1px solid var(--workspace-delete-stroke, var(--button-pistachio-stroke));
+    background: var(--workspace-delete-bg, var(--button-pistachio-tertiary));
+    color: var(--workspace-delete-stroke, var(--button-pistachio-stroke));
+    border-radius: 0;
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .card-drag-handle:active {
+    cursor: grabbing;
+  }
+
+  .card-drag-handle:focus-visible {
+    outline: 2px solid var(--workspace-delete-focus, var(--button-pistachio-focus-ring));
+    outline-offset: 0.2rem;
+  }
+
+  .card-drag-handle-grip {
+    display: grid;
+    gap: 0.18rem;
+  }
+
+  .card-drag-handle-grip span {
+    display: block;
+    width: 0.95rem;
+    height: 0.12rem;
+    background: currentColor;
   }
 }
 

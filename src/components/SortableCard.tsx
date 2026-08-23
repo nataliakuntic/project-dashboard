@@ -1,4 +1,4 @@
-import { type TransitionEvent, useRef, useState } from "react";
+import { type HTMLAttributes, type TransitionEvent, useEffect, useRef, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { TranslationSet } from "../translations";
@@ -23,6 +23,7 @@ function SortableCard({
   onDelete
 }: SortableCardProps) {
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const hasCompletedDeleteRef = useRef(false);
   const {
     attributes,
@@ -39,6 +40,39 @@ function SortableCard({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return;
+    }
+
+    const mediaQueryList = window.matchMedia("(max-width: 540px)");
+    const updateViewportState = (event?: MediaQueryListEvent) => {
+      setIsMobileViewport(event?.matches ?? mediaQueryList.matches);
+    };
+
+    updateViewportState();
+
+    mediaQueryList.addEventListener("change", updateViewportState);
+
+    return () => {
+      mediaQueryList.removeEventListener("change", updateViewportState);
+    };
+  }, []);
+
+  const desktopActivatorProps =
+    !isDeleting && !isMobileViewport
+      ? {
+          ref: setActivatorNodeRef,
+          ...attributes,
+          ...listeners
+        }
+      : {};
+
+  const mobileHandleProps: HTMLAttributes<HTMLButtonElement> = {
+    "aria-label": uiText.moveCard,
+    ...(!isDeleting && isMobileViewport ? { ...attributes, ...listeners } : {})
   };
 
   const completeDelete = () => {
@@ -92,10 +126,8 @@ function SortableCard({
         onTransitionEnd={handleDeleteTransitionEnd}
       >
         <div
-          ref={isDeleting ? undefined : setActivatorNodeRef}
           className="sortable-card-activator"
-          {...(isDeleting ? {} : attributes)}
-          {...(isDeleting ? {} : listeners)}
+          {...desktopActivatorProps}
         >
           <ProjectCard
             title={card.title}
@@ -108,6 +140,8 @@ function SortableCard({
             onSubtitleCommit={onSubtitleCommit}
             onDescriptionCommit={onDescriptionCommit}
             onDelete={handleDeleteRequest}
+            dragHandleProps={mobileHandleProps}
+            dragHandleRef={isDeleting || !isMobileViewport ? undefined : setActivatorNodeRef}
           />
         </div>
       </div>
