@@ -462,6 +462,7 @@
   }
 
   .project-description {
+    font-weight: 400;
     max-width: 100%;
   }
 }
