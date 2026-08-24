@@ -546,6 +546,11 @@
     font-size: 1.05rem;
   }
 
+  .workspace-action-button-card,
+  .workspace-action-button-project {
+    border-width: 0.75px;
+  }
+
   .dashboard-workspace-panel[data-language="en"] .workspace-action-button-card {
     order: 2;
   }
