@@ -179,6 +179,7 @@
     width: 2.4rem;
     height: 2.4rem;
     padding: 0;
+    border-width: 0.75px;
   }
 
   .project-card-header-actions {
@@ -194,7 +195,7 @@
     width: 2.4rem;
     height: 2.4rem;
     padding: 0;
-    border: 1px solid var(--workspace-delete-stroke, var(--button-pistachio-stroke));
+    border: 0.75px solid var(--workspace-delete-stroke, var(--button-pistachio-stroke));
     background: var(--workspace-delete-bg, var(--button-pistachio-tertiary));
     color: var(--workspace-delete-stroke, var(--button-pistachio-stroke));
     border-radius: 0;
