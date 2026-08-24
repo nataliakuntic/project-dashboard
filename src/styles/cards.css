@@ -123,12 +123,10 @@
   display: none;
 }
 
-.card-delete-button:hover {
-  background: var(--workspace-delete-hover, var(--button-pistachio-hover));
-}
-
-.card-delete-button:active {
-  background: var(--workspace-delete-active, var(--button-pistachio-active));
+@media (hover: hover) {
+  .card-delete-button:hover {
+    background: var(--workspace-delete-hover, var(--button-pistachio-hover));
+  }
 }
 
 .card-delete-button:focus-visible {
