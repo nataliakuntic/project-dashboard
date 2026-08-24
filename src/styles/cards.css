@@ -106,12 +106,18 @@
   color: var(--project-card-description);
 }
 
+.card-delete-button,
+.card-drag-handle {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .card-delete-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.4rem 0.5rem;
-  -webkit-tap-highlight-color: transparent;
   border: 1px solid var(--workspace-delete-stroke, var(--button-pistachio-stroke));
   background: var(--workspace-delete-bg, var(--button-pistachio-tertiary));
   color: var(--workspace-delete-stroke, var(--button-pistachio-stroke));
@@ -185,10 +191,6 @@
     border-width: 0.75px;
   }
 
-  .card-delete-button:active {
-    background: var(--workspace-delete-bg, var(--button-pistachio-tertiary));
-  }
-
   .project-card-header-actions {
     width: 100%;
     justify-content: space-between;
@@ -211,6 +213,7 @@
   }
 
   .card-drag-handle:active {
+    background: var(--workspace-delete-active, var(--button-pistachio-active));
     cursor: grabbing;
   }
 
