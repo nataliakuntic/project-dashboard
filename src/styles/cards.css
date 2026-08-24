@@ -129,6 +129,10 @@
   }
 }
 
+.card-delete-button:active {
+  background: var(--workspace-delete-active, var(--button-pistachio-active));
+}
+
 .card-delete-button:focus-visible {
   outline: 2px solid var(--workspace-delete-focus, var(--button-pistachio-focus-ring));
   outline-offset: 0.2rem;
@@ -179,6 +183,10 @@
     height: 2.4rem;
     padding: 0;
     border-width: 0.75px;
+  }
+
+  .card-delete-button:active {
+    background: var(--workspace-delete-bg, var(--button-pistachio-tertiary));
   }
 
   .project-card-header-actions {
