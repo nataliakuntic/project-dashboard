@@ -15,6 +15,10 @@ import SortableCard from "./SortableCard";
 
 const CARD_SENSORS = [
   PointerSensor.configure({
+    preventActivation: (event, source) =>
+      source.handle?.classList.contains("sortable-card-activator") === true &&
+      event.target instanceof Element &&
+      event.target.closest("[contenteditable], .card-delete-button") !== null,
     activationConstraints: [
       new PointerActivationConstraints.Distance({
         value: 8
